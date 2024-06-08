@@ -1,0 +1,45 @@
+BC Hackathon Plan
+
+
+Concept: 
+
+Website with "health bar" that is a representation of your current health. 
+
+Health is measured by multiple things that can affect your health, such as your status of your eyes or other body parts. 
+
+Website will be formatted into multiple parts:
+
+1. "health bar"
+2. Health recommendations 
+3. Links taking you to separate websites that can recommend what you need to do in order to live a healthy lifestyle. 
+
+
+What will we use?:
+
+Languages: python, javascript, html, css
+APIs: Fitbit API, Ozben's project
+
+
+
+Judging Rubric: 
+
+	Innovation: 
+	- We are creating a website that makes a healthbar, IRL
+
+	Scalability:
+	- Project is highly scalable because users can add more tests that change the health
+
+	Accessibility: 
+	- Easily accessible because its a website, has multiple links and easily formatted. 
+
+	Security: 
+	- Use Oauth
+
+	Track Alignment:
+	- We match perfectly int the health and wellness section. 
+
+	Design: 
+	- Website will have good interface. 
+
+
+	
