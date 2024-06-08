@@ -7,4 +7,8 @@ def home():
     return render_template("index.html")
 
 @app.route("/eyeDisease.html")
-def: 
+def test():
+    return render_template("eyeDisease.html")
+
+if(__name__ == '__main__'):
+    app.run(debug = True)
