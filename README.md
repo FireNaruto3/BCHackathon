@@ -1,3 +1,3 @@
 # BCHackathon
 Bellevue Hackathon Project
-By Jonathan Lin, Erim Ozben Everen, and Arron Randhawa.
+By Jonathan Lin, Erim Ozben Evren, and Arron Randhawa.
