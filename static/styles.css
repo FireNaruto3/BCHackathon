@@ -70,3 +70,6 @@ footer {
     margin-top: 1rem;
 }
   
+#results{
+    display: none;
+}

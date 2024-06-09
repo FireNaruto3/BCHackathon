@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import os
 from classify import classify
-
+from calculations import calculate
 
 app = Flask(__name__)
 app.secret_key = "69420"
@@ -36,9 +36,6 @@ def upload():
     session["percentage"] = confidence_item * 100
     
     return redirect(url_for("results"))
-    #return f'There is a {confidence_item * 100}% chance that you have {predicted_class_name}'
-    # return classify(file_path)
-    # return f'File uploaded successfully. Saved at: {file_path}'
 
 @app.route("/results")
 def results():
@@ -46,6 +43,34 @@ def results():
     percentage = session.get("percentage")
 
     return render_template("results.html", disease = disease, percentage = percentage)
+
+@app.route("/question")
+def questions():
+    return redirect(url_for("home"))
+
+
+@app.route("/information", methods = ["POST"])
+def information():
+
+    weight = request.form['weight']
+    height = request.form['height']
+    sleep = request.form['sleep']
+    bPM = request.form['BPM']
+    bloodPressure = request.form['bloodPressure']
+    cholestoral = request.form['cholestoral']
+    weight = int(weight)
+    height = int(height)
+    sleep = int(sleep)
+    bPM = int(bPM)
+    bloodPressure = int(bloodPressure)
+    cholestoral = int(cholestoral)
+    dict = calculate(weight,height,sleep,bPM,bloodPressure,cholestoral)
+
+    return render_template("userInput.html", BMI = dict['BMI'], sleep = dict['sleep'], BPM = dict['BPM'], bloodPressure = dict['bloodPressure'], cholestoral = dict['cholestoral'], percentage = dict['value'])
+    
+    
+
+
 
 if(__name__ == '__main__'):
     app.run(debug = True)

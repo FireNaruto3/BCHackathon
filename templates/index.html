@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eye Disease Detection</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <script src = "static/calculate.js"></script>
 </head>
 <body>
     <header>
@@ -15,19 +17,34 @@
         <p>Welcome to VitalVantage, a website made using HTML, CSS, and Node.js.</p>
         <h1>Your Current Health:</h1>
 
-        <div class = "box">
-            <p id = "health">sample number/100</p>
-        </div>
-
         <div class = "information">
             <h2>Information:</h2>
-            <p id = "BPM">BPM: </p>
-            <p id = "heart">Heart Rate:</p>
-            <p id = "breath">Breathing Rate:</p>
-            <p id = "sleep">Sleep Time: </p>
+            
+            <form id = "infoForm" action = "/information" method = "POST"> 
+            <label for="height">Height:</label>    
+            <input type="text" id="height" name="height" required><br><br>
+
+            <label for="weight">Weight:</label>    
+            <input type="text" id="weight" name="weight" required><br><br>
+
+            <label for="sleep">Hours of Sleep:</label>    
+            <input type="text" id="sleep" name="sleep" required><br><br>
+
+            <label for="BPM">BPM:</label>    
+            <input type="text" id="BPM" name="BPM" required><br><br>
+
+            <label for="bloodPressure">Blood Pressure:</label>    
+            <input type="text" id="bloodPressure" name="bloodPressure" required><br><br>
+            
+            <label for="cholestoral">Cholestoral:</label>    
+            <input type="text" id="cholestoral" name="cholestoral" required><br><br>
+            
+            <input type="submit" value="Submit">
+            </form>
+
         </div>
 
-
+        <br>
         <div class = "tests">
             
             <a href = "eyeDisease.html">Click here to take a test</a>
@@ -45,8 +62,6 @@
             </input>
 
             </form>
-
-
         </div>
     </main>
     <footer>
