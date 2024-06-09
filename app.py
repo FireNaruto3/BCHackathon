@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, session, url_for, redirect
 import os
 from classify import classify
 from calculations import calculate
+from authlib.integrations.flask_client import OAuth
 
 app = Flask(__name__)
 app.secret_key = "69420"
@@ -13,8 +14,75 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
+# OAuth configuration
+oauth = OAuth(app)
+github = oauth.register(
+    name='github',
+    client_id='Ov23limDLOmSEV4hND4Q',
+    client_secret='bef482caf1d4954b73c288c1557b680de0d82108',
+    authorize_url='https://github.com/login/oauth/authorize',
+    authorize_params=None,
+    access_token_url='https://github.com/login/oauth/access_token',
+    access_token_params=None,
+    refresh_token_url=None,
+    redirect_uri='http://localhost:5000/auth',
+    client_kwargs={'scope': 'user:email'},
+)
+
 
 @app.route("/")
+def hello():
+    return render_template("login.html")
+
+@app.route('/login')
+def login():
+    redirect_uri = url_for('authorize', _external=True)
+    return github.authorize_redirect(redirect_uri)
+
+@app.route('/auth')
+def authorize():
+    token = github.authorize_access_token()
+    resp = github.get('https://api.github.com/user', token=token)
+    user_info = resp.json()
+
+    # Fetch emails
+    emails_resp = github.get('https://api.github.com/user/emails', token=token)
+    emails = emails_resp.json()
+
+    # Select primary email if available
+    primary_email = None
+    for email in emails:
+        if email.get('primary') and email.get('verified'):
+            primary_email = email.get('email')
+            break
+
+    # Add email to user_info
+    user_info['email'] = primary_email
+
+    # Ensure 'name' key exists and fallback to 'login' if not available
+    if 'name' not in user_info or not user_info['name']:
+        user_info['name'] = user_info.get('login', 'Name not available')
+
+    session['user'] = user_info
+
+    return redirect('/')
+
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect('/')
+
+@app.route('/profile')
+def profile():
+    user = session.get('user')
+    if user:
+        return render_template('profile.html', user=user)
+    return redirect('/')
+
+
+
+@app.route("/home")
 def home():
     return render_template("index.html")
 
