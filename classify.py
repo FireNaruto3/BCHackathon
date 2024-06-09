@@ -31,4 +31,4 @@ def classify(image_path):
         confidence, predicted_class = torch.max(probabilities, 1)
 
     predicted_class_name = classes[predicted_class.item()]
-    return predicted_class_name, int(confidence.item())
+    return predicted_class_name, confidence.item()
