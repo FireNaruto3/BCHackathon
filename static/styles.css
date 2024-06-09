@@ -69,5 +69,7 @@ footer {
 #result {
     margin-top: 1rem;
 }
-=======
-  }
+  
+#results{
+    display: none;
+}
