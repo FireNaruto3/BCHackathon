@@ -92,13 +92,11 @@
 
 from flask import Flask, render_template, request, session
 import os
-# import classify.classify as classify
 from classify import classify
 
 
 app = Flask(__name__)
 app.secret_key = "69420"
-
 
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
