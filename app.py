@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template, request, session, url_for, redirect
 import os
 from classify import classify
 
@@ -35,8 +35,8 @@ def upload():
     session["disease"] = predicted_class_name
     session["percentage"] = confidence_item * 100
     
-    return render_template("results.html")
-    # return f'There is a {confidence_item * 100}% chance that you have {predicted_class_name}'
+    return redirect(url_for("results"))
+    #return f'There is a {confidence_item * 100}% chance that you have {predicted_class_name}'
     # return classify(file_path)
     # return f'File uploaded successfully. Saved at: {file_path}'
 
