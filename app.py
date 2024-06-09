@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 import os
 
 
@@ -23,19 +23,17 @@ def test():
 
 @app.route("/upload", methods = ["POST"])
 def upload():
-
     file = request.files['file']
-    
-    # If the user does not select a file, the browser submits an empty file without a filename
     if file.filename == '':
         return 'No selected file'
-    
-        # Save the file to the upload folder
     file_path = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
     file.save(file_path)
     return f'File uploaded successfully. Saved at: {file_path}'
 
 
+@app.route("/question", methods = ["POST"])
+def question():
+    return redirect(url_for('home'))
 
 if(__name__ == '__main__'):
     app.run(debug = True)
