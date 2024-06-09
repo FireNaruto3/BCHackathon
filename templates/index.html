@@ -3,79 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VitalVantage</title>
-    <link rel="stylesheet" href="/static/styles.css">
+    <title>Eye Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <header>
-        <h1>VitalVantage</h1>
+        <h1>Eye Disease Detection</h1>
     </header>
     <main>
 
-        <p>Welcome to VitalVantage, a website made to help improve your life!</p>
+        <p>Welcome to VitalVantage, a website made using HTML, CSS, and Node.js.</p>
+        <h1>Your Current Health:</h1>
 
-
-        <h1>Your Health Based On The Disease</h1>
         <div class = "box">
             <p id = "health">sample number/100</p>
         </div>
 
         <div class = "information">
-            <!-- <h2>Fill out your information here to see how long your current health!<h2> -->
-
-            <form action="/information" method="post" enctype="multipart/form-data">
-<!-- 
-                <label for="BMI">What is your BMI?</label>
-                <input type="text" id="BMI" name="BMI">
-
-                <label for="BMI">What is your height?</label>
-                <input type="text" id="height" name="height">  
-
-                <label for="BMI">What is your weight?</label>
-                <input type="text" id="weight" name="weight">    
-                
-                <label for="BMI">What is your age?</label>
-                <input type="text" id="age" name="age">
-
-                <label for="BMI">What is your gender?</label>
-                <input type="text" id="gender" name="gender">
-
-                <label for="BMI">How many hours do you sleep a day?</label>
-                <input type="text" id="hours" name="hours">
-
-                <input type="submit" value="SUBMIT"> -->
-                
-                <h3>What symptoms are you experiencing right now?</h3>
-                <label for = "symptoms">Symptoms:</label>
-                <input type = "text" id = "symptoms" name = "symptoms">
-
-                
-            </form>
+            <h2>Information:</h2>
+            <p id = "BPM">BPM: </p>
+            <p id = "heart">Heart Rate:</p>
+            <p id = "breath">Breathing Rate:</p>
+            <p id = "sleep">Sleep Time: </p>
         </div>
 
 
         <div class = "tests">
-            <p id = "tests">Need to check for a eye disease? Click here: <a href = "eyeDisease.html">test</a></p>
+            
+            <a href = "eyeDisease.html">Click here to take a test</a>
+
         </div>
     
         <div>
             <h1>Got Questions?</h1>
-
-            <form action = "/question" method = "post" >
+            <form>
             <label for="question">Question:</label>
+            
             <input type="text" id="question" name="question" required><br><br>
-            <input type="submit" value="Submit">    
+            <input type="submit" value="Submit">
+
+            </input>
+
             </form>
 
 
         </div>
-
-
+        {% endif %}
     </main>
-    
     <footer>
-        <p>&copy; 2024 My Basic Website</p>
+        <p>&copy; 2024 Eye Disease Detection</p>
     </footer>
-    <script src="app.js"></script>
 </body>
 </html>
