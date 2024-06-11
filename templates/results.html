@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -17,6 +17,98 @@
         <h3 id = "result">Percentage Certain: {{ percentage }}</h3>
         
         <p><a href = "\">Click here to return to home page</a></p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eye Disease Detection</p>
+    </footer>
+</body>
+</html> -->
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Eye Disease Detection</h1>
+    </header>
+    <main>
+        <h1>RESULTS:</h1>
+
+        <h3 id="result">Disease: {{ disease }}</h3>
+        <h3 id="result">Percentage Certain: {{ percentage }}</h3>
+        <h3 id="result">Highlighted Areas:</h3>
+        <img src="{{ url_for('static', filename=cam_image.split('/')[-1]) }}" alt="Grad-CAM Heatmap">
+
+        <p><a href="/">Click here to return to home page</a></p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eye Disease Detection</p>
+    </footer>
+</body>
+</html> -->
+
+<!-- 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Eye Disease Detection</h1>
+    </header>
+    <main>
+        <h1>RESULTS:</h1>
+
+        <h3 id="result">Disease: {{ disease }}</h3>
+        <h3 id="result">Percentage Certain: {{ percentage }}</h3>
+        <h3 id="result">Highlighted Areas:</h3>
+        <img src="{{ url_for('static', filename=cam_image.split('/')[-1]) }}" alt="Grad-CAM Heatmap">
+
+        <p><a href="/">Click here to return to home page</a></p>
+    </main>
+    <footer>
+        <p>&copy; 2024 Eye Disease Detection</p>
+    </footer>
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eye Disease Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Eye Disease Detection</h1>
+    </header>
+    <main>
+        <h1>RESULTS:</h1>
+
+        <h3 id="result">Disease: {{ disease }}</h3>
+        <h3 id="result">Percentage Certain: {{ percentage }}</h3>
+        <h3 id="result">Highlighted Areas:</h3>
+        <p>Image Path: {{ cam_image }}</p> <!-- Debugging statement -->
+        <img src="{{ url_for('static', filename=cam_image) }}" alt="Grad-CAM Heatmap">
+
+        <p><a href="/">Click here to return to home page</a></p>
     </main>
     <footer>
         <p>&copy; 2024 Eye Disease Detection</p>
